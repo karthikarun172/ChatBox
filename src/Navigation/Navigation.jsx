@@ -13,54 +13,42 @@ import Login from "../Screens/login";
 import Otp from "../Screens/otp";
 import { useState } from "react";
 import Header from "../Components/header";
+import ChatWall from "../Screens/chatWall";
+import { StatusBar, View } from "react-native";
+import { TabBaroptions } from "../Utils/tabBarOptions";
+import Menu from "../Screens/menu";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
 
+const TabNavigations = ({ navigation, route }) => {
+  return (
+    <View style={{ flex: 1, backgroundColor: Colors.lightRed }}>
+      <Header onPressMenu={() => navigation.navigate("menu")} />
+      <Tab.Navigator
+        tabBarPosition="top"
+        initialRouteName="chats"
+        tabBarOptions={TabBaroptions}
+      >
+        <Tab.Screen name="chats" component={Chats} />
+        <Tab.Screen name="status" component={Status} />
+        <Tab.Screen name="calls" component={Call} />
+      </Tab.Navigator>
+    </View>
+  );
+};
+
 const Navigations = () => {
-  const [logged, isLogged] = useState(false);
+  const [logged, isLogged] = useState(true);
   return (
     <>
       {logged ? (
         <>
-          <Header />
-          <Tab.Navigator
-            tabBarPosition="top"
-            initialRouteName="chats"
-            tabBarOptions={{
-              showIcon: true,
-              activeTintColor: Colors.darkRed,
-              labelStyle: { fontSize: 12 },
-              indicatorStyle: { backgroundColor: Colors.lightRed },
-              tabStyle: { backgroundColor: Colors.lightRed },
-              labelStyle: {
-                fontWeight: "bold",
-                textTransform: "capitalize",
-                fontSize: 17,
-              },
-              style: {
-                elevation: 0,
-                shadowOpacity: 0,
-              },
-            }}
-          >
-            <Tab.Screen
-              // options={{
-              //   tabBarIcon: ({ color }) => (
-              //     <Fontisto
-              //       name="blood-drop"
-              //       // style={{ rotation: 180 }}
-              //       size={18}
-              //       color={color}
-              //     />
-              //   ),
-              // }}
-              name="chats"
-              component={Chats}
-            />
-            <Tab.Screen name="status" component={Status} />
-            <Tab.Screen name="calls" component={Call} />
-          </Tab.Navigator>
+          <Stack.Navigator headerMode="none" initialRouteName="chats">
+            <Stack.Screen name="chats" children={TabNavigations} />
+            <Stack.Screen name="chatwall" component={ChatWall} />
+            <Stack.Screen name="menu" component={Menu} />
+          </Stack.Navigator>
         </>
       ) : (
         <Stack.Navigator headerMode="none" initialRouteName="terms">

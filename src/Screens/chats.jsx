@@ -6,10 +6,11 @@ import { CircularRedBtn } from "../Components/buttons";
 import { ChatCard } from "../Components/Cards";
 import { Colors } from "../Utils/Colors";
 import { Dummydatas } from "../Utils/DummyDatas";
+import Header from "../Components/header";
 
 const { height, width } = Dimensions.get("window");
 
-const Chats = () => {
+const Chats = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.lightRed }}>
       <FlatList
@@ -17,7 +18,13 @@ const Chats = () => {
         data={Dummydatas}
         keyExtractor={(item) => item._id}
         renderItem={({ item }) => {
-          return <ChatCard name={item.name} chats={item.chats} />;
+          return (
+            <ChatCard
+              onPress={() => navigation.navigate("chatwall")}
+              name={item.name}
+              chats={item.chats}
+            />
+          );
         }}
       />
       <View
