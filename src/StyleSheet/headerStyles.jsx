@@ -12,7 +12,7 @@ export const HeaderStyles = StyleSheet.create({
   },
   HeaderText: {
     color: Colors.darkRed,
-    marginLeft: 4,
+    marginLeft: 15,
     fontWeight: "bold",
     fontSize: 24,
   },

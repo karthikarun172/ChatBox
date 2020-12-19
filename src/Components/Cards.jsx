@@ -47,16 +47,7 @@ export function CallCard({ name, dialed, date, onPress }) {
           <Text style={styles.CallCardDatasText3}>{dialed}</Text>
         </View>
         <View style={styles.callCardCall}>
-          <TouchableOpacity
-            onPress={onPress}
-            style={{
-              height: 40,
-              width: 40,
-              borderRadius: 100,
-              backgroundColor: Colors.white,
-              elevation: 8,
-            }}
-          >
+          <TouchableOpacity onPress={onPress} style={styles.callIcon}>
             <Ionicons
               name="ios-call"
               size={23}

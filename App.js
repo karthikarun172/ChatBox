@@ -16,14 +16,14 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { Dummydatas } from "./src/Utils/DummyDatas";
 import Header from "./src/Components/header";
-import Navigations from "./src/Navigation/Navigation";
+import LoggingNav from "./src/Navigation/Navigation";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Header />
+      {/* <Header /> */}
       <NavigationContainer>
-        <Navigations />
+        <LoggingNav />
       </NavigationContainer>
       <StatusBar />
     </View>

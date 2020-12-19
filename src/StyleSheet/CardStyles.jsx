@@ -89,6 +89,13 @@ export const styles = StyleSheet.create({
   callCardCall: {
     alignSelf: "center",
   },
+  callIcon: {
+    height: 40,
+    width: 40,
+    borderRadius: 100,
+    backgroundColor: Colors.white,
+    elevation: 8,
+  },
   line: {
     borderWidth: 0.4,
     borderColor: Colors.darkBlue,
