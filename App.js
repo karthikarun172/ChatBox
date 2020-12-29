@@ -16,17 +16,19 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { Dummydatas } from "./src/Utils/DummyDatas";
 import Header from "./src/Components/header";
-import LoggingNav from "./src/Navigation/Navigation";
+import Navigations from "./src/Navigation/Navigation";
+import { Provider as RegisterProvider } from "./src/Context/register";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <Header /> */}
-      <NavigationContainer>
-        <LoggingNav />
-      </NavigationContainer>
-      <StatusBar />
-    </View>
+    <RegisterProvider>
+      <View style={styles.container}>
+        <NavigationContainer>
+          <Navigations />
+        </NavigationContainer>
+        <StatusBar />
+      </View>
+    </RegisterProvider>
   );
 }
 

@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useContext } from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import Chats from "../Screens/chats.jsx";
@@ -17,6 +17,7 @@ import ChatWall from "../Screens/chatWall";
 import { StatusBar, View } from "react-native";
 import { TabBaroptions } from "../Utils/tabBarOptions";
 import Menu from "../Screens/menu";
+import { Context as RegisterContext } from "../Context/register";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
@@ -40,6 +41,8 @@ const TabNavigations = ({ navigation, route }) => {
 
 const Navigations = () => {
   const [logged, isLogged] = useState(true);
+  const { state } = useContext(RegisterContext);
+  console.log(state.token, "Status Token");
   return (
     <>
       {logged ? (

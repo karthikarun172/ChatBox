@@ -5,9 +5,10 @@ import { TextInput, View } from "react-native";
 import { InputStyles as styles } from "../StyleSheet/inputStyles";
 import { Colors } from "../Utils/Colors";
 
-export function Input({ placeholder, width }) {
+export function Input({ placeholder, width, onChange }) {
   return (
     <TextInput
+      onChangeText={onChange}
       keyboardType="numeric"
       placeholder={placeholder}
       placeholderTextColor={Colors.darkRed}
